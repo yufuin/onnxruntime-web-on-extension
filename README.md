@@ -3,6 +3,10 @@ Sample code of chrome browser extension with onnxruntime-web running in service 
 
 # Usage
 ```bash
+# 0. download git repository
+git clone https://github.com/yufuin/onnxruntime-web-on-extension.git
+cd onnxruntime-web-on-extension
+
 # 1. prepare onnx model file
 # NOTE: the sample onnx model file has been created at python_scripts/model.onnx. To reproduce the creation process, run `python3 python_scripts/create_onnx_model.py`.
 #python3 python_scripts/create_onnx_model.py
@@ -14,7 +18,7 @@ npm install
 npm run build
 ```
 
-This builds the extension in `/ext/dist` directory.
+The extension package is built in `REPOSITORY_ROOT/ext/dist` directory.
 
 ## Test Environment
 To build extension:
