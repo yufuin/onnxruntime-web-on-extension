@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "Sample Extensions",
+    "description": "Sample Extension with ONNX-Runtime-Web",
+    "version": "1.0.0",
+    "permissions": [],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+    },
+    "web_accessible_resources": [],
+    "host_permissions": [],
+    "action": {},
+    "content_scripts": [],
+    "background": {
+        "service_worker": "service_worker.js",
+        "type": "module"
+    }
+}
