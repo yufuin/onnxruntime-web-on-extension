@@ -11,21 +11,19 @@ async function test_ort() {
         console.log(`output names: ${session.outputNames}`);
 
         // prepare input
+        const batch_size = 1;
         const input_dim = 2;
-        const input_tensor_data = new Float32Array([2.0,4.0, 5.0,-2.0, 7.0,3.0]); // tensor data is flattened array. (batch_size=3 * dim=2 -> num_elems=6)
-        const batch_size = input_tensor_data.length / input_dim;
+        const input_tensor_data = new Float32Array([2.5, 4.25]); // the data buffer is a flattened tensor (shape=[1,2] => num_elems=[1*2]=[2]).
         const input_tensor = new ort.Tensor('float32', input_tensor_data, [batch_size, input_dim]);
+        console.log(`flattened input tensor: [${input_tensor.data}] (original shape=[${input_tensor.dims}])`);
 
         // forward
         // input and output names (here `x` and `y`) depend on the model definition.
         const feeds = { x: input_tensor };
         const results = await session.run(feeds);
         const output_tensor = results.y;
-        console.log(`input (flattened): ${input_tensor.data} (shape=[${input_tensor.dims}])`);
-        console.log(`output (flattened): ${output_tensor.data} (shape=[${output_tensor.dims}])`);
+        console.log(`flattened output tensor: [${output_tensor.data}] (original shape=[${output_tensor.dims}])`);
 
-        // release resources
-        session.release();
         console.log('session successfully run.');
 
     } catch (error) {
