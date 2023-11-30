@@ -1,6 +1,8 @@
 # onnxruntime-web-on-extension
 Sample code of chrome browser extension with onnxruntime-web running in service worker.
 
+build tool: TypeScript + Vite
+
 # Usage
 ```bash
 # 0. download git repository
