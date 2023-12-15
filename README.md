@@ -20,7 +20,8 @@ npm install
 npm run build
 ```
 
-The extension package is built in `REPOSITORY_ROOT/ext/dist` directory.
+The built extension is located in the `REPOSITORY_ROOT/ext/dist` directory.
+To test the extension, load the built directory as an unpacked extension on your browser and open the service_worker console.
 
 ## Test Environment
 To build extension:
