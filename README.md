@@ -10,7 +10,7 @@ git clone https://github.com/yufuin/onnxruntime-web-on-extension.git
 cd onnxruntime-web-on-extension
 
 # 1. prepare onnx model file
-# NOTE: the sample onnx model file has been created at python_scripts/model.onnx. To reproduce the creation process, run `python3 python_scripts/create_onnx_model.py`.
+# NOTE: the sample onnx model file has been created at python_scripts/model.onnx. To reproduce the creation, run `python3 python_scripts/create_onnx_model.py`.
 #python3 python_scripts/create_onnx_model.py
 cp python_scripts/model.onnx ext/src/public/
 
