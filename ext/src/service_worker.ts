@@ -5,7 +5,7 @@ ort.env.wasm.numThreads = 1; // ref: https://github.com/microsoft/onnxruntime/is
 async function test_ort() {
     try {
         // setup session
-        const session = await ort.InferenceSession.create('./model.onnx');
+        const session = await ort.InferenceSession.create('./model.onnx', {executionProviders: ['wasm']});
         console.log('session:', session);
         console.log(`input names: ${session.inputNames}`);
         console.log(`output names: ${session.outputNames}`);
