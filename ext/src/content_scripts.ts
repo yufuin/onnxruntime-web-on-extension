@@ -1,11 +1,9 @@
-import * as ort from "onnxruntime-web";
-ort.env.wasm.numThreads = 1; // ref: https://github.com/microsoft/onnxruntime/issues/14445
-ort.env.wasm.wasmPaths = "./";
-
-async function test_ort_service_worker() {
+async function test_ort_content_scripts() {
+    const ort = await import("onnxruntime-web/webgpu");
+    ort.env.wasm.wasmPaths = chrome.runtime.getURL("./");
     try {
         // setup session
-        const session = await ort.InferenceSession.create("./model.onnx", {executionProviders: ["wasm"]});
+        const session = await ort.InferenceSession.create(chrome.runtime.getURL("./model.onnx"), {executionProviders: ["webgpu"]});
         console.log("session:", session);
         console.log(`input names: ${session.inputNames}`);
         console.log(`output names: ${session.outputNames}`);
@@ -24,12 +22,12 @@ async function test_ort_service_worker() {
         const output_tensor = results.y;
         console.log(`flattened output tensor: [${output_tensor.data}] (original shape=[${output_tensor.dims}])`);
 
+        session.release();
         console.log("session successfully run.");
 
     } catch (error) {
         console.log("error:", error);
     }
 }
-test_ort_service_worker();
-
-console.log(`service_worker loaded.`);
+test_ort_content_scripts();
+console.log("hello from content_scripts.ts");
